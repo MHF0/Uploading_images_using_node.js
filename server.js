@@ -9,8 +9,12 @@ const app = express();
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors());
+app.use("/images", express.static("uploads"));
 
 // Routes
+const uploadRouter = require("./routes/uploadImage");
+
+app.use("/api/upload-image", uploadRouter);
 
 // Listen
 const PORT = 5000;
